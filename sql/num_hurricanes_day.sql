@@ -1,10 +1,13 @@
 # ibtracs column description: https://www.ncdc.noaa.gov/ibtracs/pdf/IBTrACS_v04_column_documentation.pdf
 
 SELECT
-  TIMESTAMP_TRUNC(iso_time, day) as year_month_day,
-  count(name) as n_cyclones
+  CAST(season AS INT64) AS season_int,
+  COUNT(DISTINCT sid) AS n_cyclones
 FROM
   `bigquery-public-data.noaa_hurricanes.hurricanes`
+WHERE dist2land < 20
 GROUP BY
-  year_month_day
+  season_int
+HAVING
+  season_int > 1900
 ORDER BY 1
