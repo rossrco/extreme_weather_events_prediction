@@ -1,4 +1,5 @@
 # ibtracs column description: https://www.ncdc.noaa.gov/ibtracs/pdf/IBTrACS_v04_column_documentation.pdf
+# ibtracs website: https://www.ncdc.noaa.gov/ibtracs/index.php?name=introduction
 
 SELECT
   CAST(season AS INT64) AS season_int,
