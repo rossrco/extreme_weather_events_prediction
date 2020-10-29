@@ -17,5 +17,6 @@ FROM
 WHERE
   basin = "NA"
   AND landfall = 0
+  AND WMO_WIND IS NOT NULL
 GROUP BY
   season_int, category
