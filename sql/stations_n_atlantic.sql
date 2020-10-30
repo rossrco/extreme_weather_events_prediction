@@ -1,33 +1,32 @@
-WITH stations AS (
-  SELECT
-    id,
-    LEFT(id, 2) as country,
-    state,
-    name,
-    latitude,
-    longitude
-  FROM `bigquery-public-data.ghcn_d.ghcnd_stations`
-)
+# find all weather stations in a custom polygon in the North Atlantic Ocean
 
 SELECT
-stations.*,
-countries.name
-FROM stations
-LEFT JOIN `bigquery-public-data.ghcn_d.ghcnd_countries` countries ON stations.country = countries.code
+stat.id,
+LEFT(stat.id, 2) AS country,
+stat.state,
+stat.name,
+stat.latitude,
+stat.longitude,
+inv.element,
+inv.firstyear,
+inv.lastyear 
+FROM `bigquery-public-data.ghcn_d.ghcnd_stations` stat
+LEFT JOIN `bigquery-public-data.ghcn_d.ghcnd_inventory` inv ON stat.id = inv.id
+  AND inv.element IN ("TMAX", "TMIN", "ACMC", "AWDR", "AWND", "EVAP", "MXPN")
 WHERE
 ST_CONTAINS(
   ST_MAKEPOLYGON(
     ST_MAKELINE(
       ARRAY(
-              SELECT ST_GEOGPOINT(-12.950869, 53.431059) UNION ALL
-              SELECT ST_GEOGPOINT(-10.342842, 35.002107) UNION ALL
-              SELECT ST_GEOGPOINT(-19.931662, 13.986127) UNION ALL
-              SELECT ST_GEOGPOINT(-9.352620, 0.0)        UNION ALL
-              SELECT ST_GEOGPOINT(-49.101915, 0.384726)  UNION ALL
-              SELECT ST_GEOGPOINT(-71.903541, 13.516013) UNION ALL
-              SELECT ST_GEOGPOINT(-76.957330, 34.883146)
+              select ST_GEOGPOINT(-12.950869, 53.431059) union all
+              select ST_GEOGPOINT(-10.342842, 35.002107) union all
+              select ST_GEOGPOINT(-19.931662, 13.986127) union all
+              select ST_GEOGPOINT(-9.352620, 0.0)        union all
+              select ST_GEOGPOINT(-49.101915, 0.384726)  union all
+              select ST_GEOGPOINT(-71.903541, 13.516013) union all
+              select ST_GEOGPOINT(-76.957330, 34.883146)
             )
           )
         )
-  ,ST_GEOGPOINT(longitude, latitude)) IS TRUE
-ORDER BY id
+  ,ST_GEOGPOINT(stat.longitude, stat.latitude)) IS TRUE
+ORDER BY stat.id
