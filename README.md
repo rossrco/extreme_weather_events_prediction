@@ -10,6 +10,10 @@ During the hyperactive period between 1400 BC and 1000 AD the probability of a s
 
 ## Datasets
 ### NOAA IBTrACS Hurricane Dataset
+The International Best Track Archive for Climate Stewardship (IBTrACS) is a collaboration between several regional specialized meteorological centers with the purpose of creating a centralized database of tropical storms for public use. Another goal of the program is to provide an open access to storm data in order to elicit useful feedback from the public.
+
+The dataset contains (at the time of writing) 694 061 rows of data. The data represents periodical observations of the location and intensity of tropical storms since 1842.
+
 ### NOAA GHCN Temperature Dataset
 
 The first instance of satellite surveilance of hurricanes was in [1966](https://history.nasa.gov/SP-168/section1.htm#:~:text=Since%20February%201965%2C%20meteorological%20satellites,%2C%20hurricane%2C%20and%20typhoon.%22), so we will consider at sea data after this year as reliable. However, we will also investigate the full historic records of hurricane landfalls, which we will consider reliable for obvious reasons.
