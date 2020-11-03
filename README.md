@@ -14,6 +14,6 @@ The International Best Track Archive for Climate Stewardship (IBTrACS) is a coll
 
 The dataset contains (at the time of writing) 694 061 rows of data. The data represents periodical observations of the location and intensity of tropical storms since 1842.
 
-### NOAA GHCN Temperature Dataset
-
 The first instance of satellite surveilance of hurricanes was in [1966](https://history.nasa.gov/SP-168/section1.htm#:~:text=Since%20February%201965%2C%20meteorological%20satellites,%2C%20hurricane%2C%20and%20typhoon.%22), so we will consider at sea data after this year as reliable. However, we will also investigate the full historic records of hurricane landfalls, which we will consider reliable for obvious reasons.
+
+### NOAA GHCN Temperature Dataset
