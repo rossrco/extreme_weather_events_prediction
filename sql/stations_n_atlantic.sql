@@ -18,13 +18,17 @@ ST_CONTAINS(
   ST_MAKEPOLYGON(
     ST_MAKELINE(
       ARRAY(
-              select ST_GEOGPOINT(-12.950869, 53.431059) union all
+              select ST_GEOGPOINT(-1.306379, 49.316014)  union all
               select ST_GEOGPOINT(-10.342842, 35.002107) union all
               select ST_GEOGPOINT(-19.931662, 13.986127) union all
               select ST_GEOGPOINT(-9.352620, 0.0)        union all
               select ST_GEOGPOINT(-49.101915, 0.0)       union all
               select ST_GEOGPOINT(-71.903541, 13.516013) union all
-              select ST_GEOGPOINT(-76.957330, 34.883146)
+              select ST_GEOGPOINT(-77.111534, 7.367272)  union all
+              select ST_GEOGPOINT(-76.957330, 34.883146) union all
+              select ST_GEOGPOINT(-70.455789, 43.963237) union all
+              select ST_GEOGPOINT(-21.150974, 49.144944) union all
+              select ST_GEOGPOINT(-1.306379, 49.316014)
             )
           )
         )
