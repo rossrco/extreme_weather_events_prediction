@@ -22,7 +22,7 @@ ST_CONTAINS(
               select ST_GEOGPOINT(-10.342842, 35.002107) union all
               select ST_GEOGPOINT(-19.931662, 13.986127) union all
               select ST_GEOGPOINT(-9.352620, 0.0)        union all
-              select ST_GEOGPOINT(-49.101915, 0.384726)  union all
+              select ST_GEOGPOINT(-49.101915, 0.0)       union all
               select ST_GEOGPOINT(-71.903541, 13.516013) union all
               select ST_GEOGPOINT(-76.957330, 34.883146)
             )
