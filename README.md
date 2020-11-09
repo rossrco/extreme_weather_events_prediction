@@ -17,3 +17,4 @@ The dataset contains (at the time of writing) 694 061 rows of data. The data rep
 The first instance of satellite surveilance of hurricanes was in [1966](https://history.nasa.gov/SP-168/section1.htm#:~:text=Since%20February%201965%2C%20meteorological%20satellites,%2C%20hurricane%2C%20and%20typhoon.%22), so we will consider at sea data after this year as reliable. However, we will also investigate the full historic records of hurricane landfalls, which we will consider reliable for obvious reasons.
 
 ### NOAA GHCN Temperature Dataset
+The [Global Historic Climatology Network](https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn) is a database consisting of meteorological measurements from weather stations around the globe. The collective timespan resulting from the union of the measurements from all all the 115 000 stations is 175 years.
