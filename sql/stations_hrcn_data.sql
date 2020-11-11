@@ -7,7 +7,9 @@ WITH
     longitude,
     WMO_WIND
   FROM
-    `bigquery-public-data.noaa_hurricanes.hurricanes`)
+    `bigquery-public-data.noaa_hurricanes.hurricanes`
+  WHERE extract(year from iso_time) = 1973)
+
 SELECT
   sid,
   iso_date,
@@ -24,6 +26,7 @@ ON
   hrcn.iso_date = date(ghcnd_1973.date)
   AND ghcnd_1973.id = 'GPM00078894'
   AND ghcnd_1973.element ='TAVG'
-WHERE EXTRACT(year FROM iso_date) = 1973
-AND date IS NOT NULL
-AND WMO_WIND IS NOT NULL
+  AND date IS NOT NULL
+  AND WMO_WIND IS NOT NULL
+ORDER BY iso_date
+LIMIT 100000
