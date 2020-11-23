@@ -8,7 +8,7 @@ WITH
     WMO_WIND
   FROM
     `bigquery-public-data.noaa_hurricanes.hurricanes`
-  WHERE extract(year from iso_time) = 1973)
+  WHERE extract(year from iso_time) = 2000)
 
 SELECT
   sid,
@@ -21,12 +21,12 @@ SELECT
 FROM
   hrcn
 LEFT JOIN
-  `bigquery-public-data.ghcn_d.ghcnd_1973` ghcnd_1973
+  `bigquery-public-data.ghcn_d.ghcnd_2000` ghcnd_2000
 ON
-  hrcn.iso_date = date(ghcnd_1973.date)
-  AND ghcnd_1973.id = 'GPM00078894'
-  AND ghcnd_1973.element ='TAVG'
-  AND date IS NOT NULL
-  AND WMO_WIND IS NOT NULL
+  hrcn.iso_date = date(ghcnd_2000.date)
+  AND ghcnd_2000.id = 'GPM00078894'
+  AND ghcnd_2000.element ='TAVG'
+  --AND date IS NOT NULL
+  --AND WMO_WIND IS NOT NULL
 ORDER BY iso_date
-LIMIT 100000
+LIMIT 1000
