@@ -1,32 +1,37 @@
 WITH
-  hrcn AS (
+  hrcn_agg AS (
   SELECT
     sid,
-    DATE(iso_time) AS iso_date,
-    latitude,
-    longitude,
-    WMO_WIND
+    DATE(iso_time) AS date,
+    AVG(latitude)  AS avg_lat,
+    AVG(longitude) AS avg_lng,
+    AVG(WMO_WIND)  AS avg_wind_speed
   FROM
     `bigquery-public-data.noaa_hurricanes.hurricanes`
-  WHERE extract(year from iso_time) = 2000)
+  WHERE EXTRACT(year FROM iso_time) = 2000
+  GROUP BY date, sid),
+  
+  guadalupe_agg AS (
+  SELECT
+    DATE(date) AS date,
+    AVG(value) AS avg_temp
+  FROM `bigquery-public-data.ghcn_d.ghcnd_2000` ghcnd_2000
+  WHERE
+    ghcnd_2000.id = 'GPM00078894'
+    AND ghcnd_2000.element ='TAVG'
+  GROUP BY date)
 
 SELECT
+  hrcn_agg.date,
+  guadalupe_agg.date,
   sid,
-  iso_date,
-  date,
-  latitude,
-  longitude,
-  WMO_WIND,
-  value AS avg_temp
+  avg_lat,
+  avg_lng,
+  avg_wind_speed,
+  avg_temp
 FROM
-  hrcn
+  hrcn_agg
 LEFT JOIN
-  `bigquery-public-data.ghcn_d.ghcnd_2000` ghcnd_2000
-ON
-  hrcn.iso_date = date(ghcnd_2000.date)
-  AND ghcnd_2000.id = 'GPM00078894'
-  AND ghcnd_2000.element ='TAVG'
-  --AND date IS NOT NULL
-  --AND WMO_WIND IS NOT NULL
-ORDER BY iso_date
+  guadalupe_agg ON hrcn_agg.date = guadalupe_agg.date
+ORDER BY 1
 LIMIT 1000
