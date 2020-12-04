@@ -23,7 +23,6 @@ WITH
 
 SELECT
   hrcn_agg.date,
-  guadalupe_agg.date,
   sid,
   avg_lat,
   avg_lng,
